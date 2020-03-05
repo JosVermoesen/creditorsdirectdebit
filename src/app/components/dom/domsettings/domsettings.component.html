@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="domSettingsForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <input type="text" class="form-control mt-1" formControlName="name"
+        placeholder="{{ 'CDDSETTINGS.NameLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="enterpriseNumber"
+        placeholder="{{ 'CDDSETTINGS.EnterpriseNumberLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="country"
+        placeholder="{{ 'CDDSETTINGS.CountryCodeLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="street"
+        placeholder="{{ 'CDDSETTINGS.StreetAndNumberLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="pcPlace"
+        placeholder="{{ 'CDDSETTINGS.PostalCodeAndCityLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="iban"
+        placeholder="{{ 'CDDSETTINGS.IbanLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="bic"
+        placeholder="{{ 'CDDSETTINGS.BicLabel' | translate }}">
+      <input type="text" class="form-control mt-1" formControlName="domId"
+        placeholder="{{ 'CDDSETTINGS.DomIdLabel' | translate }}">
+    </div>
+
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary mr-1" value="{{ 'CDDSETTINGS.SaveButtonLabel' | translate }}"
+        [disabled]="!domSettingsForm.valid">
+      <button type="button" class="btn btn-warning mr-1"
+        (click)="clearState()">{{ 'CDDSETTINGS.ClearButtonLabel' | translate }}</button>
+      <button type="button" class="btn btn-success"
+        (click)="onRead()">{{ 'CDDSETTINGS.ReadButtonLabel' | translate }}</button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+</div>
