@@ -2,7 +2,7 @@
 
 ## Getting started for users
 
-You can use directly via [demo](https://cdd.vsoft.be)
+You can use directly via [demo](https://cdd.vsoft.be){:target="\_blank"}
 Your data is stored as json files inside the localStorage of the browser you are using. With jsZip you can zip and transfert your data to other browsers and/or other computers
 
 ## Getting started for developers
