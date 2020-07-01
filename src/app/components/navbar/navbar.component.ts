@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+
 import { LanguageComponent } from './language/language.component';
 
 @Component({
@@ -13,6 +15,8 @@ import { LanguageComponent } from './language/language.component';
 })
 export class NavbarComponent implements OnInit {
   bsModalRef: BsModalRef;
+
+  faGlobe = faGlobe;
 
   constructor(
     private modalService: BsModalService,

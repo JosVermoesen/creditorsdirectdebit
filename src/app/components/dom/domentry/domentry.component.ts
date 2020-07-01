@@ -53,7 +53,7 @@ export class DomEntryComponent implements OnInit {
     private domService: DomService,
     private fb: FormBuilder,
     private ts: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initErrorMessages();
@@ -67,9 +67,10 @@ export class DomEntryComponent implements OnInit {
         this.selectTab(1);
 
         this.refreshErrorMessages();
+        const dummyNotProvided = 'NOTPROVIDED';
         this.domEntryForm = this.fb.group({
           id: [entry.id],
-          endToEndReference: [entry.endToEndReference, Validators.required],
+          endToEndReference: [dummyNotProvided, Validators.required], // [entry.endToEndReference, Validators.required],
           amount: [
             entry.amount,
             [Validators.required, Validators.min(0.01), Validators.max(3000)]
@@ -192,6 +193,9 @@ export class DomEntryComponent implements OnInit {
 
   onSubmit() {
     if (this.domEntryForm.valid) {
+      if (this.domEntryForm.value.endToEndReference == '') {
+        this.domEntryForm.value.endToEndReference = 'NOTPROVIDED'
+      }
       const mandate = this.domEntryForm.value.mandateStartDate;
       const momentDate = moment(mandate).format('YYYY-MM-DD');
       this.domEntryForm.value.mandateStartDate = momentDate;
@@ -220,7 +224,7 @@ export class DomEntryComponent implements OnInit {
 
     this.domEntryForm = this.fb.group({
       id: Uuid(),
-      endToEndReference: [null, Validators.required],
+      endToEndReference: ['NOTPROVIDED', Validators.required],
       amount: [
         null,
         [Validators.required, Validators.min(0.01), Validators.max(3000)]

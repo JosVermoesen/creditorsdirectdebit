@@ -1,10 +1,8 @@
 <nav class="navbar navbar-dark bg-dark mb-3">
   <div class="container">
     <a href="#" class="navbar-brand">{{ "NAVBAR.NavTitle" | translate }}</a>
-    <button class="navbar-toggler" (click)="onLanguageModal()" type="button" data-toggle="collapse"
-      data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a (click)="onLanguageModal()">
+      <fa-icon class="fa-2x" [icon]="faGlobe"></fa-icon>
+    </a>
   </div>
 </nav>

@@ -13,6 +13,8 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { VsoftValidationModule } from 'vsoftvalidation';
 
 import { AppComponent } from './app.component';
@@ -28,7 +30,6 @@ import { DomSettingsComponent } from './components/dom/domsettings/domsettings.c
 import { DomSaveComponent } from './components/dom/domsave/domsave.component';
 import { DomLoadComponent } from './components/dom/domload/domload.component';
 import { DomToolsComponent } from './components/dom/domtools/domtools.component';
-import { DomAboutComponent } from './components/dom/domabout/domabout.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -46,7 +47,6 @@ export function createTranslateLoader(http: HttpClient) {
     DomLoadComponent,
     DomSaveComponent,
     DomToolsComponent,
-    DomAboutComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +64,7 @@ export function createTranslateLoader(http: HttpClient) {
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
+    FontAwesomeModule,
     VsoftValidationModule
   ],
   providers: [DomService, LanguageService, BsModalRef],
