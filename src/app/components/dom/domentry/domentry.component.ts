@@ -67,7 +67,7 @@ export class DomEntryComponent implements OnInit {
         this.selectTab(1);
 
         this.refreshErrorMessages();
-        const dummyNotProvided = 'NOTPROVIDED';
+        const dummyNotProvided = Date.now().toString(); // 'NOTPROVIDED';
         this.domEntryForm = this.fb.group({
           id: [entry.id],
           endToEndReference: [dummyNotProvided, Validators.required], // [entry.endToEndReference, Validators.required],
@@ -192,9 +192,10 @@ export class DomEntryComponent implements OnInit {
   }
 
   onSubmit() {
+    const dummyNotProvided = Date.now().toString(); // 'NOTPROVIDED';
     if (this.domEntryForm.valid) {
       if (this.domEntryForm.value.endToEndReference == '') {
-        this.domEntryForm.value.endToEndReference = 'NOTPROVIDED'
+        this.domEntryForm.value.endToEndReference = dummyNotProvided;
       }
       const mandate = this.domEntryForm.value.mandateStartDate;
       const momentDate = moment(mandate).format('YYYY-MM-DD');
@@ -211,6 +212,7 @@ export class DomEntryComponent implements OnInit {
   }
 
   clearState() {
+    // console.log(Date.now().toString());
     this.locked = true;
     this.lockSwitch();
     this.isNew = true;
@@ -222,9 +224,10 @@ export class DomEntryComponent implements OnInit {
     });
     this.readyForExport = false;
 
+    const dummyNotProvided = Date.now().toString(); // 'NOTPROVIDED';
     this.domEntryForm = this.fb.group({
       id: Uuid(),
-      endToEndReference: ['NOTPROVIDED', Validators.required],
+      endToEndReference: [dummyNotProvided, Validators.required],
       amount: [
         null,
         [Validators.required, Validators.min(0.01), Validators.max(3000)]

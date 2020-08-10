@@ -7,13 +7,24 @@
 <div class="modal-body">
   <form [formGroup]="domSettingsForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <input type="text" class="form-control mt-1" formControlName="name"
+
+      <app-text-input formControlName="name" [label]="nameLabel"></app-text-input>
+      <app-text-input formControlName="enterpriseNumber" [label]="enterpriseNumberLabel"></app-text-input>
+      <app-text-input formControlName="country" [label]="countryCodeLabel"></app-text-input>
+      <!-- <input type="text" class="form-control mt-1" formControlName="name"
         placeholder="{{ 'CDDSETTINGS.NameLabel' | translate }}">
       <input type="text" class="form-control mt-1" formControlName="enterpriseNumber"
         placeholder="{{ 'CDDSETTINGS.EnterpriseNumberLabel' | translate }}">
       <input type="text" class="form-control mt-1" formControlName="country"
-        placeholder="{{ 'CDDSETTINGS.CountryCodeLabel' | translate }}">
-      <input type="text" class="form-control mt-1" formControlName="street"
+        placeholder="{{ 'CDDSETTINGS.CountryCodeLabel' | translate }}"> -->
+
+      <app-text-input formControlName="street" [label]="streetAndNumberLabel"></app-text-input>
+      <app-text-input formControlName="pcPlace" [label]="postalCodeAndCityLabel"></app-text-input>
+      <app-text-input formControlName="iban" [label]="ibanLabel"></app-text-input>
+      <app-text-input formControlName="bic" [label]="bicLabel"></app-text-input>
+      <app-text-input formControlName="domId" [label]="domIdLabel"></app-text-input>
+
+      <!-- <input type="text" class="form-control mt-1" formControlName="street"
         placeholder="{{ 'CDDSETTINGS.StreetAndNumberLabel' | translate }}">
       <input type="text" class="form-control mt-1" formControlName="pcPlace"
         placeholder="{{ 'CDDSETTINGS.PostalCodeAndCityLabel' | translate }}">
@@ -22,7 +33,7 @@
       <input type="text" class="form-control mt-1" formControlName="bic"
         placeholder="{{ 'CDDSETTINGS.BicLabel' | translate }}">
       <input type="text" class="form-control mt-1" formControlName="domId"
-        placeholder="{{ 'CDDSETTINGS.DomIdLabel' | translate }}">
+        placeholder="{{ 'CDDSETTINGS.DomIdLabel' | translate }}"> -->
     </div>
 
     <div class="form-group">

@@ -3,5 +3,9 @@
     "NavTitle": "Creditors Direct Debit",
     "LanguageModalTitle": "Select your language:",
     "LanguageModalCloseBtnName": "Close"
+  },
+  "COMMON": {
+    "IsRequired": "is verplicht",
+    "InvalidEmail": "Ongeldig email adres"
   }
 }

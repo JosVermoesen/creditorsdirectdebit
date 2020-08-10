@@ -9,15 +9,24 @@
                 <form [formGroup]="domEntryForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <input formControlName="id" hidden>
-                        <input type="number" class="form-control mt-1" formControlName="amount" placeholder="{{ 'CDDENTRY.AmountLabel' | translate }}">
-                        <input hidden type="text" class="form-control mt-1" formControlName="endToEndReference" placeholder="{{ 'CDDENTRY.EndToEndLabel' | translate }}">
-                        <input type="text" class="form-control mt-1" formControlName="communication" placeholder="{{ 'CDDENTRY.CommunicationLabel' | translate }}">
+                        <input type="number" class="form-control mt-1" formControlName="amount"
+                            placeholder="{{ 'CDDENTRY.AmountLabel' | translate }}">
+                        <input type="text" class="form-control mt-1" formControlName="communication"
+                            placeholder="{{ 'CDDENTRY.CommunicationLabel' | translate }}">
+                        <!-- <input readonly type="text" class="form-control mt-1" formControlName="endToEndReference"
+                            placeholder="{{ 'CDDENTRY.EndToEndLabel' | translate }}"> -->
 
                         <div *ngIf="!locked">
-                            <input type="text" class="form-control mt-1" formControlName="mandateId" placeholder="{{ 'CDDENTRY.MandateIdLabel' | translate }}">
-                            <input class="form-control mt-1" #datepickerYMD="bsDatepicker" bsDatepicker formControlName="mandateStartDate" placeholder="{{ 'CDDENTRY.MandateStartDateLabel' | translate }}" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-default' }">
-                            <input type="text" class="form-control mt-1" formControlName="clientName" placeholder="{{ 'CDDENTRY.ClientNameLabel' | translate }}">
-                            <input type="text" class="form-control mt-1" formControlName="clientIban" placeholder="{{ 'CDDENTRY.IbanNumberLabel' | translate }}">
+                            <input type="text" class="form-control mt-1" formControlName="mandateId"
+                                placeholder="{{ 'CDDENTRY.MandateIdLabel' | translate }}">
+                            <input class="form-control mt-1" #datepickerYMD="bsDatepicker" bsDatepicker
+                                formControlName="mandateStartDate"
+                                placeholder="{{ 'CDDENTRY.MandateStartDateLabel' | translate }}"
+                                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', containerClass: 'theme-default' }">
+                            <input type="text" class="form-control mt-1" formControlName="clientName"
+                                placeholder="{{ 'CDDENTRY.ClientNameLabel' | translate }}">
+                            <input type="text" class="form-control mt-1" formControlName="clientIban"
+                                placeholder="{{ 'CDDENTRY.IbanNumberLabel' | translate }}">
                         </div>
                         <div *ngIf="locked">
                             <input readonly type="text" class="form-control mt-1" formControlName="mandateId">
@@ -25,47 +34,59 @@
                             <input readonly type="text" class="form-control mt-1" formControlName="clientName">
                             <input readonly type="text" class="form-control mt-1" formControlName="clientIban">
                         </div>
+                        <input readonly type="text" class="form-control mt-1 text-primary" formControlName="endToEndReference"
+                            placeholder="{{ 'CDDENTRY.EndToEndLabel' | translate }}">
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary mr-1" [disabled]="!domEntryForm.valid" value="{{btnAddOrUpdate}}">
-                        <button type="button" class="btn btn-warning mr-2" (click)="clearState()">{{ 'CDDENTRY.ClearButtonLabel' | translate }}</button>
-                        <button *ngIf="!isNew" type="button" class="btn btn-secundary" (click)="lockSwitch()">{{ lockLabel }}</button>
+                        <input type="submit" class="btn btn-primary mr-1" [disabled]="!domEntryForm.valid"
+                            value="{{btnAddOrUpdate}}">
+                        <button type="button" class="btn btn-warning mr-2"
+                            (click)="clearState()">{{ 'CDDENTRY.ClearButtonLabel' | translate }}</button>
+                        <button *ngIf="!isNew" type="button" class="btn btn-secundary"
+                            (click)="lockSwitch()">{{ lockLabel }}</button>
                     </div>
 
                     <div *ngIf="(validationMessages)">
                         <ng-container *ngFor="let validation of validationMessages.amount">
-                            <div class="error-message" *ngIf="domEntryForm.get('amount').hasError(validation.type) && (domEntryForm.get('amount').dirty || domEntryForm.get('amount').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('amount').hasError(validation.type) && (domEntryForm.get('amount').dirty || domEntryForm.get('amount').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
                         <ng-container *ngFor="let validation of validationMessages.endToEndReference">
-                            <div class="error-message" *ngIf="domEntryForm.get('endToEndReference').hasError(validation.type) && (domEntryForm.get('endToEndReference').dirty || domEntryForm.get('endToEndReference').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('endToEndReference').hasError(validation.type) && (domEntryForm.get('endToEndReference').dirty || domEntryForm.get('endToEndReference').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
                         <ng-container *ngFor="let validation of validationMessages.communication">
-                            <div class="error-message" *ngIf="domEntryForm.get('communication').hasError(validation.type) && (domEntryForm.get('communication').dirty || domEntryForm.get('communication').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('communication').hasError(validation.type) && (domEntryForm.get('communication').dirty || domEntryForm.get('communication').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
                         <ng-container *ngFor="let validation of validationMessages.mandateId">
-                            <div class="error-message" *ngIf="domEntryForm.get('mandateId').hasError(validation.type) && (domEntryForm.get('mandateId').dirty || domEntryForm.get('mandateId').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('mandateId').hasError(validation.type) && (domEntryForm.get('mandateId').dirty || domEntryForm.get('mandateId').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
                         <ng-container *ngFor="let validation of validationMessages.mandateStartDate">
-                            <div class="error-message" *ngIf="domEntryForm.get('mandateStartDate').hasError(validation.type) && (domEntryForm.get('mandateStartDate').dirty || domEntryForm.get('mandateStartDate').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('mandateStartDate').hasError(validation.type) && (domEntryForm.get('mandateStartDate').dirty || domEntryForm.get('mandateStartDate').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
                         <ng-container *ngFor="let validation of validationMessages.clientName">
-                            <div class="error-message" *ngIf="domEntryForm.get('clientName').hasError(validation.type) && (domEntryForm.get('clientName').dirty || domEntryForm.get('clientName').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('clientName').hasError(validation.type) && (domEntryForm.get('clientName').dirty || domEntryForm.get('clientName').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>
                         <ng-container *ngFor="let validation of validationMessages.clientIban">
-                            <div class="error-message" *ngIf="domEntryForm.get('clientIban').hasError(validation.type) && (domEntryForm.get('clientIban').dirty || domEntryForm.get('clientIban').touched)">
+                            <div class="error-message"
+                                *ngIf="domEntryForm.get('clientIban').hasError(validation.type) && (domEntryForm.get('clientIban').dirty || domEntryForm.get('clientIban').touched)">
                                 {{ validation.message }}
                             </div>
                         </ng-container>

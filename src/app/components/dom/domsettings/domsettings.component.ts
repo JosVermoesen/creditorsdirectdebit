@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { DomCompany } from './../../../_models/domCompany';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-domsettings',
@@ -20,9 +21,47 @@ export class DomSettingsComponent implements OnInit {
 
   public onSaved: Subject<boolean>;
 
-  constructor(public bsModalRef: BsModalRef, private fb: FormBuilder) {}
+  nameLabel: string;
+  enterpriseNumberLabel: string;
+  countryCodeLabel: string;
+  streetAndNumberLabel: string;
+  postalCodeAndCityLabel: string;
+  ibanLabel: string;
+  bicLabel: string;
+  domIdLabel: string;
+
+  constructor(
+    public bsModalRef: BsModalRef,
+    private fb: FormBuilder,
+    private ts: TranslateService
+  ) { }
 
   public ngOnInit(): void {
+    this.ts.get('CDDSETTINGS.NameLabel').subscribe((res: string) => {
+      this.nameLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.EnterpriseNumberLabel').subscribe((res: string) => {
+      this.enterpriseNumberLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.CountryCodeLabel').subscribe((res: string) => {
+      this.countryCodeLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.StreetAndNumberLabel').subscribe((res: string) => {
+      this.streetAndNumberLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.PostalCodeAndCityLabel').subscribe((res: string) => {
+      this.postalCodeAndCityLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.IbanLabel').subscribe((res: string) => {
+      this.ibanLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.BicLabel').subscribe((res: string) => {
+      this.bicLabel = res;
+    });
+    this.ts.get('CDDSETTINGS.DomIdLabel').subscribe((res: string) => {
+      this.domIdLabel = res;
+    });
+
     this.onSaved = new Subject();
     this.domSettings = JSON.parse(localStorage.getItem('cddSettings_Template'));
     if (this.domSettings === null) {

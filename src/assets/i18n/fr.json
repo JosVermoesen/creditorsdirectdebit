@@ -3,5 +3,9 @@
     "NavTitle": "Domiciliations créancier",
     "LanguageModalTitle": "Choisissez votre langue:",
     "LanguageModalCloseBtnName": "Fermer"
+  },
+  "COMMON": {
+    "IsRequired": "is verplicht",
+    "InvalidEmail": "Ongeldig email adres"
   }
 }

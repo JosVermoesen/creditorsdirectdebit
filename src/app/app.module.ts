@@ -30,6 +30,7 @@ import { DomSettingsComponent } from './components/dom/domsettings/domsettings.c
 import { DomSaveComponent } from './components/dom/domsave/domsave.component';
 import { DomLoadComponent } from './components/dom/domload/domload.component';
 import { DomToolsComponent } from './components/dom/domtools/domtools.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -47,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
     DomLoadComponent,
     DomSaveComponent,
     DomToolsComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,
