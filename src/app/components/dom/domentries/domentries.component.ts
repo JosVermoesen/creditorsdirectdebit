@@ -30,7 +30,7 @@ export class DomEntriesComponent implements OnInit {
     private domService: DomService,
     private modalService: BsModalService,
     private ts: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.domService.stateClear.subscribe(clear => {

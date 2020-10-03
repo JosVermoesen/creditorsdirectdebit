@@ -39,8 +39,8 @@ Your data is stored as json files inside the localStorage of the browser you are
 For use of bootstrap, add into styles.css:
 
 ```bash
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import '../node_modules/ngx-bootstrap//datepicker//bs-datepicker.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~ngx-bootstrap//datepicker//bs-datepicker.css';
 ```
 
 ## Important1: tsconfig.json

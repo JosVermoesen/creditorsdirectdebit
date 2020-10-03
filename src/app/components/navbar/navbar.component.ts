@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
-
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 import { LanguageComponent } from './language/language.component';
@@ -21,9 +19,9 @@ export class NavbarComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onLanguageModal() {
     const lblTitle = this.translate.instant('NAVBAR.LanguageModalTitle');
