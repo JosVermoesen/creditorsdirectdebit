@@ -9,9 +9,11 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import * as moment from 'moment';
 
 import { Uuid } from '../../../_functions/uuid';
+import { checkIBAN } from '../../../_functions/checkIban';
+
 import { DomService } from '../../../_services/dom.service';
 import { DomEntry } from '../../../_models/domEntry';
-import { checkIBAN } from 'vsoftvalidation';
+// import { checkIBAN } from 'vsoftvalidation';
 
 @Component({
   selector: 'app-domentry',
@@ -166,12 +168,17 @@ export class DomEntryComponent implements OnInit {
     };
   }
 
-  ibanMatchValidator() {
+  ibanMatchValidator(ibanToCheck: string): boolean {
     /* return g.get('password').value === g.get('confirmPassword').value
       ? null
       : { mismatch: true }; */
-    const ibanValid = checkIBAN('910076876640', true, true);
-    console.log(ibanValid);
+    const ibanValid = checkIBAN(ibanToCheck, true, false);
+    if (ibanValid == ibanToCheck) {
+      return true;
+    } else {
+      console.log('TODO: message iban invalid ')
+      return false;
+    }
   }
 
   selectTab(tabId: number) {
@@ -193,22 +200,26 @@ export class DomEntryComponent implements OnInit {
 
   onSubmit() {
     const dummyNotProvided = Date.now().toString(); // 'NOTPROVIDED';
-    if (this.domEntryForm.valid) {
-      if (this.domEntryForm.value.endToEndReference == '') {
-        this.domEntryForm.value.endToEndReference = dummyNotProvided;
+
+    const ibanIsValid = this.ibanMatchValidator(this.domEntryForm.value.clientIban);
+    if (ibanIsValid) {
+      if (this.domEntryForm.valid) {
+        if (this.domEntryForm.value.endToEndReference == '') {
+          this.domEntryForm.value.endToEndReference = dummyNotProvided;
+        }
+        const mandate = this.domEntryForm.value.mandateStartDate;
+        const momentDate = moment(mandate).format('YYYY-MM-DD');
+        this.domEntryForm.value.mandateStartDate = momentDate;
+        const domEntry: DomEntry = Object.assign({}, this.domEntryForm.value);
+        if (this.isNew) {
+          this.domService.addDomEntry(domEntry);
+        } else {
+          this.domService.updateDomEntry(domEntry);
+        }
       }
-      const mandate = this.domEntryForm.value.mandateStartDate;
-      const momentDate = moment(mandate).format('YYYY-MM-DD');
-      this.domEntryForm.value.mandateStartDate = momentDate;
-      const domEntry: DomEntry = Object.assign({}, this.domEntryForm.value);
-      if (this.isNew) {
-        this.domService.addDomEntry(domEntry);
-      } else {
-        this.domService.updateDomEntry(domEntry);
-      }
+      this.selectTab(0);
+      this.clearState();
     }
-    this.selectTab(0);
-    this.clearState();
   }
 
   clearState() {

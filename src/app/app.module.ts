@@ -15,8 +15,6 @@ import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { VsoftValidationModule } from 'vsoftvalidation';
-
 import { AppComponent } from './app.component';
 
 import { LanguageService } from './_services/language.service';
@@ -66,8 +64,7 @@ export function createTranslateLoader(http: HttpClient) {
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
-    FontAwesomeModule,
-    VsoftValidationModule
+    FontAwesomeModule
   ],
   providers: [DomService, LanguageService, BsModalRef],
   entryComponents: [
@@ -79,4 +76,4 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
