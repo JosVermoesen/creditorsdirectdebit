@@ -60,11 +60,25 @@ Before building, add paths for jszip in compilerOptions AND set resolveJsonModul
     ...
 ```
 
-## Updating to latest Angular 9
+## warnings for file-saver
 
-This app is on Angular 9. Before starting an update, always commit first any valid open changes
+In angular.json, to avoid CommonJs warnings, add __allowedCommonJsDependencies__ in the options section for __file-saver__:
 
-update to latest Angular 9:
-`ng update @angular/cli@9 @angular/core@9`
+```json
+"builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            ...
+            "allowedCommonJsDependencies": [
+              "file-saver"
+            ],
+            ...
+```
+
+## Updating to latest Angular 10
+
+This app is on Angular 10. Before starting an update, always commit first any valid open changes
+
+update to latest Angular 10:
+`ng update @angular/cli@10 @angular/core@10`
 
 Follow the instructions eventualy to fixes and test good working app
