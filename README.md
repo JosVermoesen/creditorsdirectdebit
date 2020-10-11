@@ -30,9 +30,8 @@ Your data is stored as json files inside the localStorage of the browser you are
 - [moment](https://www.npmjs.com/package/moment): `npm i moment`
 - [@ngx-translate/core](https://www.npmjs.com/package/@ngx-translate/core): `npm i @ngx-translate/core`
 - [@ngx-translate/http-loader](https://www.npmjs.com/package/@ngx-translate/http-loader): `npm i @ngx-translate/http-loader`
-- [vsoftvalidation](https://www.npmjs.com/package/vsoftvalidation): `npm i vsoftvalidation`
 
-- install all packages in one commandline: `npm i bootstrap ngx-bootstrap@5.3.2 file-saver @types/file-saver jszip @types/jszip moment @ngx-translate/core @ngx-translate/http-loader vsoftvalidation`
+- install all packages in one commandline: `npm i bootstrap ngx-bootstrap@5.3.2 file-saver @types/file-saver jszip @types/jszip moment @ngx-translate/core @ngx-translate/http-loader`
 
 ## styles.css
 
