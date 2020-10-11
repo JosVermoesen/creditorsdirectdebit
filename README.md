@@ -8,7 +8,7 @@ Your data is stored as json files inside the localStorage of the browser you are
 ## Getting started for developers
 
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
-- Clone this repository: `git clone https://github.com/JosVermoesen/ng-cdirectdebit9.git`.
+- Clone this repository: `git clone https://github.com/JosVermoesen/creditorsdirectdebit.git`.
 - Run `npm install` inside the project root.
 - Run `ng serve` in a terminal from the project root.
 - Profit. :tada:
